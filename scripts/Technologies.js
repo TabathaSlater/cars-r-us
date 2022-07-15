@@ -23,9 +23,9 @@ export const Technologies = () => {
 //__Add Event Listener to React When Options Are Chosen
 
 document.addEventListener(
-    "click",
+    "change",
     (event) => {
-        const itemClicked = event.target
+        let itemClicked = event.target
         if (itemClicked.id === 'tech') {
          setTechnology(parseInt(event.target.value))
             }

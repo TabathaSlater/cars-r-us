@@ -68,7 +68,15 @@ const database = {
         price: 45
     }],
     orderBuilder: {},
-    customOrders: []
+    customOrders: [
+        {
+            id: 1,
+            paintId: 1,
+            interiorId: 1,
+            technologyId: 1,
+            wheelId: 1
+        }
+    ]
 };
 
 
@@ -98,7 +106,7 @@ export const getCustomOrders = () => {
     return database.customOrders.map(customOrders => ({...customOrders}))
 };
 
-//_____
+//_____Setter functions to pass object id to order object in database
 export const setPaint = (id) => {
     database.orderBuilder.paintId = id
 };
@@ -113,4 +121,27 @@ export const setTechnology = (id) => {
 
 export const setWheels = (id) => {
     database.orderBuilder.wheelId = id
+};
+
+//_Function to take temporary choices being stored in order builder and make permanent
+
+export const addCustomOrder = () => {
+    // Copy the current state of user choices
+    const newOrder = {...database.orderBuilder}
+
+    //add a new primary key to the object
+    const lastIndex = database.customOrders.length - 1
+    newOrder.id = database.customOrders[lastIndex].id + 1
+
+    //add a timestamp
+    newOrder.timestamp = Date.now()
+
+    //add new order object to custom orders state
+    database.customOrders.push(newOrder)
+
+    //reset the temp state for user choices
+    database.orderBuilder = {}
+
+    //broadcast a notification that the permanent state has changed
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 };

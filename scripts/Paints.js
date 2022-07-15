@@ -23,7 +23,7 @@ export const paintColors = () => {
 //__Add Event Listener to React When Options Are Chosen
 
 document.addEventListener(
-    "click",
+    "change",
     (event) => {
         if (event.target.id === "paint") {
             setPaint(parseInt(event.target.value))

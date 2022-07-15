@@ -4,6 +4,8 @@ import {Technologies} from "./Technologies.js"
 import {paintColors} from "./Paints.js"
 import {Interiors} from "./Interiors.js"
 import {Wheels} from "./Wheels.js"
+import {addCustomOrder} from "./database.js"
+import {Orders} from "./orders.js"
 
 // This is where the HTML is assembled
 
@@ -44,9 +46,11 @@ export const carFactory = () => {
             <button id="orderButton">Create Custom Order</button>
         </article>
 
+        <article class="customOrders">
+            <h2>Custom Car</h2>
+            ${Orders()}
+        </article>
+    </article>
+
         `
 };
-        // <article class="customOrders">
-        //     <h2>Custom Car</h2>
-        //     ${}
-        // </article>
