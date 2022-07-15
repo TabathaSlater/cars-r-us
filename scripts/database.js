@@ -71,6 +71,9 @@ const database = {
     customOrders: []
 };
 
+
+//__Exports________________________
+
 export const getPaint = () => {
     return database.paint.map(paint => ({...paint}))
 };
@@ -93,4 +96,21 @@ export const getOrderBuilder = () => {
 
 export const getCustomOrders = () => {
     return database.customOrders.map(customOrders => ({...customOrders}))
+};
+
+//_____
+export const setPaint = (id) => {
+    database.orderBuilder.paintId = id
+};
+
+export const setInterior = (id) => {
+    database.orderBuilder.interiorId = id
+};
+
+export const setTechnology = (id) => {
+    database.orderBuilder.technologyId = id
+};
+
+export const setWheels = (id) => {
+    database.orderBuilder.wheelId = id
 };
